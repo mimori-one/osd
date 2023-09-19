@@ -50,7 +50,7 @@
                 パスワードを忘れた場合
               </Link>
             </div>
-            <Btn class='w-full rounded-lg px-5 py-2.5 text-center' @click='moveTop'>
+            <Btn class='w-full text-center' @click='moveTop'>
               ログイン
             </Btn>
             <div class='text-gray-500'>
