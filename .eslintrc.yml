@@ -1,0 +1,253 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
+  - plugin:vue/vue3-recommended
+  - plugin:tailwindcss/recommended
+  - plugin:@intlify/vue-i18n/recommended
+parserOptions:
+  ecmaVersion: latest
+  parser: '@typescript-eslint/parser'
+  sourceType: module
+plugins:
+  - import
+  - vue
+  - '@typescript-eslint'
+  - tailwindcss
+settings:
+  tailwindcss:
+    config: 'config/tailwind.config.ts'
+  vue-i18n:
+    localeDir: 'config/locales/*.json'
+rules:
+  'block-spacing':
+    - error
+  'comma-dangle':
+    - error
+    - always-multiline
+  'comma-spacing':
+    - error
+  'eqeqeq':
+    - error
+  'indent':
+    - error
+    - 2
+  'key-spacing':
+    - error
+    - align: value
+  'max-len':
+    - error
+    - code: 140
+      ignoreComments: true
+      ignoreTemplateLiterals: true
+      ignoreStrings: true
+      ignorePattern: "function.*\\(.+\\)|\\(.+\\):\\s.+\\s\\{|^import .*" # @note Typescriptの関数定義は長くなるので許容する
+  'no-else-return':
+    - error
+  'no-multi-spaces':
+    - error
+  'no-multiple-empty-lines':
+    - error
+  'no-restricted-imports':
+    - error
+    - patterns:
+        - "./*"              # @note 相対パス指定は禁止
+        - "../*"             # @note 相対パス指定は禁止
+        - "~/*"              # @note `@/`   を使用する
+        - "~~/*"             # @note `@@/`  を使用する
+        - "nuxt/dist/app"    # @note `#app` を使用する
+        - "~~/.nuxt/imports" # @note `#imports` を使用する
+  'object-curly-spacing':
+    - error
+    - always
+  'require-jsdoc':
+    - off
+    - require:
+        MethodDefinition: true
+        ClassDeclaration: true
+        FunctionDeclaration: true
+  'quotes':
+    - error
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: true
+  'semi':
+    - error
+    - never
+  'sort-imports':
+    - error
+    - ignoreDeclarationSort: true
+  'space-before-function-paren':
+    - error
+    - anonymous: never
+      named: never
+      asyncArrow: always
+  'space-in-parens':
+    - error
+  'space-infix-ops':
+    - error
+  'valid-jsdoc':
+    - off
+    - requireParamType: false
+      requireReturnType: false
+      requireParamDescription: true
+      requireReturnDescription: true
+  '@typescript-eslint/ban-types':
+    - error
+    - extendDefaults: true
+  '@typescript-eslint/consistent-type-assertions':
+    - error
+    - assertionStyle: as
+  '@typescript-eslint/consistent-indexed-object-style':
+    - error
+  '@typescript-eslint/explicit-function-return-type':
+    - off
+    - allowExpressions: false
+      allowTypedFunctionExpressions: false
+  '@typescript-eslint/member-ordering':
+    - error
+  '@typescript-eslint/method-signature-style':
+    - error
+    - method
+  '@typescript-eslint/naming-convention':
+    - error
+    - selector: typeParameter
+      format:
+        - PascalCase
+      prefix:
+        - T
+    - selector: interface
+      format:
+        - PascalCase
+      prefix:
+        - I
+  '@typescript-eslint/no-explicit-any':
+    - error
+  '@typescript-eslint/no-unused-vars':
+    - error
+  '@typescript-eslint/space-infix-ops':
+    - error
+  '@typescript-eslint/type-annotation-spacing':
+    - error
+  '@typescript-eslint/sort-type-constituents':
+    - error
+  'import/no-unresolved':
+    - off
+  'import/order':
+    - error
+    - alphabetize:
+        order: asc
+      groups:
+        - builtin
+        - external
+        - internal
+        - parent
+        - sibling
+        - index
+      pathGroups:
+        - pattern:  '#*'
+          group:    'internal'
+          position: 'before'
+        - pattern:  '@/stores/**'
+          group:    'internal'
+          position: 'before'
+        - pattern:  '@/composables/**'
+          group:    'internal'
+        - pattern:  '@/types/**'
+          group:    'internal'
+        - pattern:  '@/components/**'
+          group:    'internal'
+          position: 'after'
+  'tailwindcss/no-custom-classname':
+    - off
+  'vue/attributes-order':
+    - error
+    - alphabetical: true
+  'vue/block-lang':
+    - error
+    - script:
+        lang: ts
+  'vue/html-quotes':
+    - error
+    - single
+    - avoidEscape: true
+  'vue/multi-word-component-names':
+    - off
+  'vue/max-attributes-per-line':
+    - error
+    - singleline:
+        max: 3
+      multiline:
+        max: 1
+  'vue/component-tags-order':
+    - error
+    - order:
+      - template
+      - i18n
+      - script[setup]
+      - script
+      - style
+  'vue/no-restricted-html-elements':
+    - error
+    - element: a
+      message: '`<Link>` コンポーネントを利用してください'
+    - element: button
+      message: '`<Btn>` コンポーネントを利用してください'
+    - element: NuxtLink
+      message: '`<Link>` コンポーネントを利用してください'
+  'vue/no-v-text':
+    - error
+  'vue/no-undef-components':
+    - off
+    - ignorePatterns:
+      - 'NuxtLayout'
+      - 'NuxtPage'
+      - 'NuxtLink'
+      - 'ClientOnly'
+  'vue/require-v-for-key':
+    - off
+  '@intlify/vue-i18n/no-missing-keys':
+    - error
+  '@intlify/vue-i18n/no-missing-keys-in-other-locales':
+    - off
+  '@intlify/vue-i18n/no-raw-text':
+    - off
+globals:
+  process:    readonly
+  describe:   readonly
+  context:    readonly
+  it:         readonly
+  beforeEach: readonly
+  expect:     readonly
+overrides:
+  - files:
+    - '**/*.vue'
+    rules:
+      'max-len':
+        - off
+      '@typescript-eslint/explicit-function-return-type':
+        - error
+        - allowExpressions: false
+          allowTypedFunctionExpressions: false
+          allowedNames:
+            - data
+            - mounted
+      'vue/max-len':
+        - error
+        - code: 135
+          template: 135
+          ignoreComments: true
+          ignoreUrls: true
+          ignoreTemplateLiterals: true
+          ignoreHTMLAttributeValues: true
+          ignoreHTMLTextContents: true
+          ignorePattern: "^import .*"
+  - files:
+    - 'spec/**/*.spec.ts'
+    rules:
+      '@typescript-eslint/explicit-function-return-type':
+        - off
