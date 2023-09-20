@@ -1,18 +1,29 @@
 <template>
   <div class='m-4'>
-    <div class="mb-4 text-gray-500 font-bold">
-        新規登録
+    <div class='mb-4 font-bold text-gray-500'>
+      新規登録
     </div>
 
     <form class='w-full max-w-sm'>
       <div class='mb-6 md:flex md:items-center'>
-        <div class="mb-6">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">メールアドレス</label>
-            <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="sample@super.com" required>
+        <div class='mb-6'>
+          <label class='mb-2 block text-sm font-medium text-gray-900' for='email'>メールアドレス</label>
+          <input
+            id='email'
+            class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+            placeholder='sample@super.com'
+            required
+            type='email'
+          >
         </div>
-        <div class="mb-6">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">パスワード</label>
-            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+        <div class='mb-6'>
+          <label class='mb-2 block text-sm font-medium text-gray-900' for='password'>パスワード</label>
+          <input
+            id='password'
+            class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+            required
+            type='password'
+          >
         </div>
       </div>
       <div class='mb-6 md:flex md:items-center'>
@@ -25,14 +36,25 @@
         </label>
       </div>
       <div class='md:flex md:items-center'>
-        <div class='md:w-1/3' />
-        <div class='md:w-2/3'>
-          <button class='focus:shadow-outline rounded bg-red-500 px-4 py-2 font-bold text-white shadow hover:bg-purple-400 focus:outline-none' type='button'>
-            登録
-          </button>
-        </div>
+        <Btn
+          class='w-full md:w-auto'
+          role='secondary'
+          @click='signup'
+        >
+          登録
+        </Btn>
       </div>
     </form>
   </div>
 </template>
-  
+
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+import Btn from '@/components/commons/btn.vue'
+
+const router = useRouter()
+
+const signup = async (): Promise<void> => {
+  router.push({ path: '/' })
+}
+</script>
