@@ -3,7 +3,7 @@
     <template v-if='step1'>
       <!-- 印刷領域 -->
       <div class='whitespace-pre-wrap'>
-        追加するサイズを選択してください。
+        販売するサイズを選択してください。
       </div>
 
       <!-- セレクタ -->
