@@ -14,10 +14,6 @@ export function useCurrentUser(): IDataGetterComposable<IAccount> {
       return
     }
 
-    if ($app.token === ''){
-      return
-    }
-
     setCurrentUser.run({ 
       account: {
         id:                        123,

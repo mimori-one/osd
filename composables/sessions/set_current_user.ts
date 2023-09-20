@@ -13,10 +13,14 @@ export function useSetCurrentUser(): IActionComposable<TParams, Promise<void>> {
 
   return {
     async run({ account, token }: TParams): Promise<void> {
+      console.log('useSetCurrentUser')
       if (token) {
         $app.token = token
-      }else{
-        $app.token = ''
+      }
+
+      if (token === ''){
+        $app.account = null
+        return
       }
 
       $app.account = account
