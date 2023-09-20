@@ -11,7 +11,7 @@
         <!-- ヘッダ右 -->
         <div class='flex items-center justify-items-end'>
           <!-- 検索 -->
-          <div style='width: 20px; font-family: helvetica, arial, sans-serif' @click='reload'>
+          <div style='width: 20px; font-family: helvetica, arial, sans-serif'>
             <Link href='/search'>
               <!-- inline SVG icon -->
               <svg
@@ -77,7 +77,7 @@
 
           <!-- 非ログイン時ログイン導線 -->
           <template v-else>
-            <Link class='mr-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 lg:px-5 lg:py-2.5' to='/login'>
+            <Link class='mr-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800 lg:px-5 lg:py-2.5' href='/login'>
               Log in
             </Link>
           </template>
@@ -95,10 +95,6 @@ import Link from '@/components/commons/link.vue'
 import DMenu from '@/components/menu.vue'
 
 const opened = ref(false)
-const currentUser = ref(useCurrentUser())
+const currentUser = useCurrentUser().data
 
-const reload = (): void => {
-  currentUser.value = useCurrentUser()
-  console.log('')
-}
 </script>

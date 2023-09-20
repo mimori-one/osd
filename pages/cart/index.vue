@@ -6,10 +6,10 @@
   </div>
 
   <div class='flex flex-col'>
-    <Link class='m-3 rounded border bg-green-500 p-3 text-gray-200' to='/order/guest'>
+    <Link class='m-3 rounded border bg-green-500 p-3 text-gray-200' href='/order/guest'>
       ゲストとして注文
     </Link>
-    <Link class='m-3 rounded border bg-yellow-500 p-3 text-gray-200' to='/order'>
+    <Link class='m-3 rounded border bg-yellow-500 p-3 text-gray-200' href='/order'>
       ログインして注文
     </Link>
   </div>

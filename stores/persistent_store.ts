@@ -5,17 +5,17 @@ import { Ref } from 'vue'
 type keys = 'account' | 'callback_redirect' | 'cartItems' | 'locale' | 'token';
 
 interface IPersistentStore {
-  perpetuate<T>(key: keys, initialValue: T): Ref<T>;
+  possess<T>(key: keys, initialValue: T): Ref<T>;
 }
 
 export const usePersistentStore = defineStore('persistent_store', (): IPersistentStore => {
   return {
-    perpetuate<T>(key: keys, initialValue: T): Ref<T> {
-      // if (process.client) {
-      return useLocalStorage(key, initialValue, { serializer: StorageSerializers.object })
-      // }
+    possess<T>(key: keys, initialValue: T): Ref<T> {
+      if (process.client) {
+        return useLocalStorage(key, initialValue, { serializer: StorageSerializers.object })
+      }
 
-      // return computed((): T => initialValue)
+      return computed((): T => initialValue)
     },
   }
 })

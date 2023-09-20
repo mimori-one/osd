@@ -12,12 +12,12 @@ interface IAppStore {
 }
 
 export const useAppStore = defineStore('app_store', (): IAppStore => {
-  const { perpetuate } = usePersistentStore()
+  const { possess } = usePersistentStore()
   const i18n = useI18n({ useScope: 'global' })
 
-  const account = perpetuate<IAccount | null>('account', null)
-  const locale = perpetuate<IAccount['locale']>('locale', 'ja')
-  const token = perpetuate('token', '')
+  const account = possess<IAccount | null>('account', null)
+  const locale = possess<IAccount['locale']>('locale', 'ja')
+  const token = possess('token', '')
 
   syncRef(locale, i18n.locale, { direction: 'ltr' })
 
