@@ -226,7 +226,7 @@
 
       <!-- 販売数量設定 -->
       <template v-if='productData.activated_sizes'>
-        <div class='mb-2 block text-xm font-medium text-gray-900 dark:text-white'>
+        <div class='text-xm mb-2 block font-medium text-gray-900 dark:text-white'>
           販売数量の管理
         </div>
         <!-- <Btn
@@ -255,27 +255,27 @@
           追加
         </Btn> -->
 
-        <ul class="max-w-md divide-y divide-gray-200 mt-4">
+        <ul class='mt-4 max-w-md divide-y divide-gray-200'>
           <div v-for='stock in productData.stocks'>
-          
             <Stock :stock='stock' />
-  
-        </div>
-                </ul>
+          </div>
+        </ul>
       </template>
 
       <Btn
         class='w-full'
-        @click='saveItem'
-        disabled='true' 
-        role='default'
+        disabled='true'
+        role='default' 
         type='button'
+        @click='saveItem'
       >
         この内容で保存
       </Btn>
     </form>
 
-    <Link class='text-white hover:underline' href='/creator'>管理ページに戻る</Link>
+    <Link class='text-white hover:underline' href='/creator'>
+      管理ページに戻る
+    </Link>
 
     <!-- Main modal -->
     <div
@@ -346,37 +346,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useOpenComponentModal } from '@/composables/components/open_component_modal'
-import { IProduct } from '@/types/product'
+// import { IProduct } from '@/types/product'
 import Btn from '@/components/commons/btn'
 import Link from '@/components/commons/link'
+import Stock from '@/components/creators/stock'
 import ConfirmModal, { IProps, TResult } from '@/components/domains/size_select_modal.vue'
 import Input from '@/components/forms/input'
-import Stock from '@/components/creators/stock'
 // import ConfirmModal, { IProps, TResult } from '@/components/systems/confirm_modal.vue'
 
-
 const sizeParams = ref(0)
-
-const { data: sizes } = await useFetch('/api/creator/sizes')
-// const { data: scan } = await useFatch('/api/creator/scan')
 
 const openConfirmModal = useOpenComponentModal<IProps, TResult>(ConfirmModal)
 
 const { 
   data: productData, 
-  pending: moutainsPending, 
-  error: moutainsError, 
-  refresh: moutainsRefresh, 
 } = await useFetch('/api/creator/product/1')
-
-const scanResult = ref({})
-
-const scanFile = async (): void => {
-  const result = await useFetch('/api/creator/scan')
-  console.log(result)
-  scanResult.value = result.data.value
-  console.log(scanResult.value)
-}
 
 const openSizeModal = async (): Promise<void> => {
   console.log('clicked')

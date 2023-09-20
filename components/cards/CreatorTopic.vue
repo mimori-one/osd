@@ -26,6 +26,6 @@ interface IProps {
   url: string
 }
 
-const props = defineProps<IProps>()
+defineProps<IProps>()
 
 </script>

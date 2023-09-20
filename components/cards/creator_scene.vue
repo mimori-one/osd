@@ -16,6 +16,6 @@ interface IProps {
   scene: IScene
 }
 
-const props = defineProps<IProps>()
+defineProps<IProps>()
 
 </script>

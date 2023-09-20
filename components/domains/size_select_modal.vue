@@ -38,8 +38,8 @@
       <div>
         印刷領域を設定します。
       </div>
-      <div class="w-full flex justify-center">
-      <img class="w-48" src='https://mimori-one.github.io/printdoc/assets/printarea.png'>
+      <div class='flex w-full justify-center'>
+        <img class='w-48' src='https://mimori-one.github.io/printdoc/assets/printarea.png'>
       </div>
     </template>
 
@@ -83,7 +83,7 @@
         v-if='step2'
         class='w-full md:w-auto'
         role='secondary'
-        @click='step　=　1'
+        @click='step = 1'
       >
         サイズ選択に戻る
       </Btn>
@@ -91,7 +91,7 @@
         v-if='step3'
         class='w-full md:w-auto'
         role='secondary'
-        @click='step　=　2'
+        @click='step = 2'
       >
         印刷領域の設定に戻る
       </Btn>
@@ -114,11 +114,11 @@
 </template>
 
 <script setup lang="ts">
+// import { useFetch } from '@vueuse/core'
 import { computed, ref } from 'vue'
 // import { useI18n } from '@/composables/systems/i18n'
 import Btn from '@/components/commons/btn.vue'
 import Layout from '@/components/commons/modals/layout.vue'
-import Input from '@/components/forms/input'
 
 export interface IProps {
   subject: string,
@@ -142,22 +142,19 @@ const details = computed((): string[] => {
 const step = ref(1)
 
 const step1 = computed((): boolean => {
-  return step.value == 1
+  return step.value === 1
 })
 
 const step2 = computed((): boolean => {
-  return step.value == 2
+  return step.value === 2
 })
 
 const step3 = computed((): boolean => {
-  return step.value == 3
+  return step.value === 3
 })
 
 const { 
   data: scanResult, 
-  pending: scanPending, 
-  error: scanError, 
-  refresh: scanRefresh, 
 } = await useFetch('/api/creator/scan')
 
 // const { t } = useI18n()
