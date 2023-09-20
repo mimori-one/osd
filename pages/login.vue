@@ -54,7 +54,7 @@
               ログイン
             </Btn>
             <div class='text-gray-500'>
-              <Link class='text-primary-600 dark:text-primary-500 font-medium hover:underline' href='#'>
+              <Link class='text-primary-600 dark:text-primary-500 font-medium hover:underline' href='/signup'>
                 新規登録はこちら
               </Link>
             </div>
@@ -92,7 +92,7 @@ const moveTop = (): void => {
   const token = 'dummy_token'
 
   setCurrentUser.run({
-    account, token
+    account, token,
   })
   router.push({ path: '/' })
 }
