@@ -114,7 +114,7 @@ const logout = (): void => {
   const token = ''
 
   setCurrentUser.run({
-    account, token
+    account, token,
   })
 
   router.push({ path: '/' })
