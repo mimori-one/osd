@@ -63,13 +63,12 @@
 
 <script setup lang="ts">
 import { IScene } from '@/types/scene.d.ts'
-import Link from '@/components/commons/link'
 import CardsCreatorIcon from '@/components/cards/CreatorIcon'
 
 interface IProps {
   scene: IScene
 }
 
-const props = defineProps<IProps>()
+defineProps<IProps>()
 
 </script>

@@ -9,9 +9,9 @@ export function useGetScene(): IScene {
     thumbnail:  'https://pbs.twimg.com/media/FL3vacGaQAEF7Kr?format=png&name=small',
     // https://cards.scryfall.io/art_crop/front/c/3/c329ff2b-0331-4934-a8df-870dd7bf402b.jpg
     creator:    {
-      id: 1,
+      id:         1,
       avatar_url: 'https://cards.scryfall.io/art_crop/front/c/3/c329ff2b-0331-4934-a8df-870dd7bf402b.jpg',
-      name:      '義務・銀河南無',
+      name:       '義務・銀河南無',
     },
   }
 }

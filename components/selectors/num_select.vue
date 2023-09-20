@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-    購入数
+      購入数
     </div>
     <select
       id='countries'
@@ -22,7 +22,7 @@
         dark:focus:ring-blue-500
       '
     >
-      <option v-for="count in counts">
+      <option v-for='count in counts'>
         {{ count }}
       </option>
     </select>
@@ -30,7 +30,5 @@
 </template>
 
 <script setup lang="ts">
-import Btn from '@/components/commons/btn'
-
-const counts = [1,2,3,4,5]
+const counts = [1, 2, 3, 4, 5]
 </script>

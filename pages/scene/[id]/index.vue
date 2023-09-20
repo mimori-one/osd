@@ -9,20 +9,20 @@
     <FramesScene :scene='scene' />
 
     <!-- サイズ選択・AR確認 -->
-    <div class="mr-4 ml-4">
+    <div class='mx-4'>
       <SelectorsSizeSelect />
     </div>
 
     <!-- 数量選択 -->
-    <NumSelect class="m-4" />
+    <NumSelect class='m-4' />
 
     <!-- カート追加 -->
     <Btn
-        class='m-4 p-4 text-white bg-orange-400'
-        size='large'
-        @click='addCart'
+      class='m-4 bg-orange-400 p-4 text-white'
+      size='large'
+      @click='addCart'
     >
-    カートに追加
+      カートに追加
     </Btn>
 
     <!-- 一旦消しておく -->
@@ -39,10 +39,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+import { useGetScene } from '@/composables/scenes/get_scene'
 import Btn from '@/components/commons/btn'
 // import { useRoute } from '#app'
-import { useGetScene } from '@/composables/scenes/get_scene'
-import { useRouter } from 'vue-router'
 import NumSelect from '@/components/selectors/num_select'
 
 // const route = useRoute()

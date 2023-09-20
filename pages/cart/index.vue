@@ -2,8 +2,7 @@
   <p>現在のカートの中身</p>
 
   <div v-for='item in items'>
-  <CartItem :item='item'>
-  </CartItem>
+    <CartItem :item='item' />
   </div>
 
   <div class='flex flex-col'>
@@ -17,10 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import Link from '@/components/commons/link'
 import CartItem from '@/components/carts/cart_item'
+import Link from '@/components/commons/link'
 const { data: items } = await useFetch('/api/cart/items')
 </script>
-
 
 

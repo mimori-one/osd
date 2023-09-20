@@ -5,12 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import Link from '@/components/commons/link'
-
 interface IProps {
   url: string
 }
 
-const props = defineProps<IProps>()
+defineProps<IProps>()
 
 </script>

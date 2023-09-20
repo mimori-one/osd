@@ -4,8 +4,8 @@
       <div class='mb-6 grid gap-6 md:grid-cols-2'>
         <div>
           <div>
-            <div class="text-white">
-            マイプリント（自分の画像を印刷）
+            <div class='text-white'>
+              マイプリント（自分の画像を印刷）
             </div>
             <!-- 画像をアップロード -->
             <div v-if='sizeParams === 0' class='flex w-full items-center justify-center'>
@@ -113,21 +113,19 @@
 
       <!-- 販売数量設定 -->
       <template v-if='productData.activated_sizes'>
-        <div class='mb-2 block text-xm font-medium text-gray-900 dark:text-white'>
-                    <!-- 数量選択 -->
-    <NumSelect class="m-4" />
+        <div class='text-xm mb-2 block font-medium text-gray-900 dark:text-white'>
+          <!-- 数量選択 -->
+          <NumSelect class='m-4' />
         </div>
-
       </template>
-
       
 
       <Btn
         class='w-full'
-        @click='saveItem'
-        disabled='true' 
-        role='default'
+        disabled='true'
+        role='default' 
         type='button'
+        @click='saveItem'
       >
         この内容でカートに入れる
       </Btn>
@@ -138,41 +136,25 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useOpenComponentModal } from '@/composables/components/open_component_modal'
-import { IProduct } from '@/types/product'
+// import { IProduct } from '@/types/product'
 import Btn from '@/components/commons/btn'
 import Link from '@/components/commons/link'
+// import Stock from '@/components/creators/stock'
 import ConfirmModal, { IProps, TResult } from '@/components/domains/size_select_modal.vue'
 import Input from '@/components/forms/input'
-import Stock from '@/components/creators/stock'
 import NumSelect from '@/components/selectors/num_select'
 // import ConfirmModal, { IProps, TResult } from '@/components/systems/confirm_modal.vue'
 
 
 const sizeParams = ref(0)
 
-const { data: sizes } = await useFetch('/api/creator/sizes')
-// const { data: scan } = await useFatch('/api/creator/scan')
-
 const openConfirmModal = useOpenComponentModal<IProps, TResult>(ConfirmModal)
 
 const { 
   data: productData, 
-  pending: moutainsPending, 
-  error: moutainsError, 
-  refresh: moutainsRefresh, 
 } = await useFetch('/api/creator/product/1')
 
-const scanResult = ref({})
-
-const scanFile = async (): void => {
-  const result = await useFetch('/api/creator/scan')
-  console.log(result)
-  scanResult.value = result.data.value
-  console.log(scanResult.value)
-}
-
 const openSizeModal = async (): Promise<void> => {
-  console.log('clicked')
   const result = await openConfirmModal.run({ subject: '販売するサイズの追加', message: 'サイズを追加します。' })
   if (result === 'ok') {
     console.log('サイズを追加')
@@ -181,9 +163,6 @@ const openSizeModal = async (): Promise<void> => {
 
 const saveItem = async (): Promise<void> => {
 }
-
-// アクティベート済みサイズ
-
 
 </script>
 
