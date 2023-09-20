@@ -3,7 +3,7 @@
     <p>商品</p>
     <template v-for='item in items' :key='item.id'>
       <Link
-        to='/creator/items/1/edit'
+        href='/creator/items/1/edit'
       >
         {{ item.title }}
       </Link>

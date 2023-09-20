@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-restricted-html-elements -->
 <template>
-  <NuxtLink :class='linkStyle' :target='target' :to='href'>
+  <NuxtLink :class='linkStyle' :href='href' :target='target'>
     <slot />
   </NuxtLink>
 </template>

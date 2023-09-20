@@ -5,7 +5,7 @@
         ログイン時
       </div>
       <div>
-        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' :styled='false' to='/creator'>
+        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' href='/creator' :styled='false'>
           マイページ
         </Link>
       </div>
@@ -15,17 +15,17 @@
         </Btn>
       </div>
       <div>
-        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' :styled='false' to='/about'>
+        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' href='/about' :styled='false'>
           About
         </Link>
       </div>
       <div>
-        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' :styled='false' to='/seller'>
+        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' href='/seller' :styled='false'>
           購入する
         </Link>
       </div>
       <div>
-        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' :styled='false' to='/search'>
+        <Link class='block w-full px-6 py-3 text-black no-underline transition-colors hover:bg-gray-50' href='/search' :styled='false'>
           探す
         </Link>
       </div>
