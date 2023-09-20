@@ -71,7 +71,7 @@ import { useSetCurrentUser } from '@/composables/sessions/set_current_user'
 import Btn from '@/components/commons/btn'
 import Link from '@/components/commons/link'
 
-// const setCurrentUser =
+const setCurrentUser = useSetCurrentUser()
 const router = useRouter()
 
 const moveTop = (): void => {
@@ -91,9 +91,8 @@ const moveTop = (): void => {
   }
   const token = 'dummy_token'
 
-  useSetCurrentUser({
-    account: account,
-    token:   token,
+  setCurrentUser.run({
+    account, token
   })
   router.push({ path: '/' })
 }

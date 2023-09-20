@@ -92,7 +92,7 @@ import Link from '@/components/commons/link.vue'
 //   location.href = '/'
 // }
 
-// const setCurrentUser =
+const setCurrentUser = useSetCurrentUser()
 const router = useRouter()
 
 const logout = (): void => {
@@ -111,10 +111,12 @@ const logout = (): void => {
     unread_notification_count: 1,
   }
 
-  useSetCurrentUser({
-    account: account,
-    token:   'null',
+  const token = ''
+
+  setCurrentUser.run({
+    account, token
   })
+
   router.push({ path: '/' })
 }
 </script>
