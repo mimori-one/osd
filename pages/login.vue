@@ -11,6 +11,7 @@
               <label class='mb-2 block text-sm font-medium text-gray-900 dark:text-white' for='email'>メールアドレス</label>
               <input
                 id='email'
+                v-model='email'
                 class='focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm'
                 name='email'
                 placeholder='sample@domain.com'
@@ -22,6 +23,7 @@
               <label class='mb-2 block text-sm font-medium text-gray-900 dark:text-white' for='password'>パスワード</label>
               <input
                 id='password'
+                v-model='pass'
                 class='focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm'
                 name='password'
                 placeholder=''
@@ -50,7 +52,7 @@
                 パスワードを忘れた場合
               </Link>
             </div>
-            <Btn class='w-full text-center' @click='moveTop'>
+            <Btn class='w-full text-center' @click='login'>
               ログイン
             </Btn>
             <div class='text-gray-500'>
@@ -73,6 +75,25 @@ import Link from '@/components/commons/link'
 
 const setCurrentUser = useSetCurrentUser()
 const router = useRouter()
+
+const email = ref('')
+const pass = ref('')
+
+const login = async (): Promise<void> => {
+  console.log(process.env.PROXY_API_URL)
+  try{
+    const res = await $fetch('/api/v1/auth/', {
+      method: 'POST',
+      body:   {
+        email:    email.value,
+        password: pass.value,
+      },
+    })
+    console.log(res)
+  }catch(e){
+    console.log(e.message) 
+  }
+}
 
 const moveTop = (): void => {
   const account = {

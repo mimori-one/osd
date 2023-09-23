@@ -12,4 +12,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target:       process.env.PROXY_API_URL,
+        changeOrigin: true,
+      },
+    },
+  },
 })
