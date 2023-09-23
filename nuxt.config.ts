@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     devProxy: {
-      '/api': {
+      '/api/': {
         target:       process.env.PROXY_API_URL,
         changeOrigin: true,
       },

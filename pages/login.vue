@@ -80,8 +80,7 @@ const email = ref('')
 const pass = ref('')
 
 const login = async (): Promise<void> => {
-  console.log(process.env.PROXY_API_URL)
-  try{
+  try {
     const res = await $fetch('/api/v1/auth/', {
       method: 'POST',
       body:   {
@@ -90,7 +89,27 @@ const login = async (): Promise<void> => {
       },
     })
     console.log(res)
-  }catch(e){
+    const account = {
+      id:                        res.id,
+      screen_name:               'もっくすくりーんねーむ',
+      name:                      'サンプル名前１',
+      email:                     res.email,
+      avatar_url:                'http://img.localhost:3000/mock.png',
+      locale:                    'ja',
+      tzname:                    'Asia/Tokyo',
+      is_activated:              false,
+      is_email_enabled:          false,
+      is_seller:                 true,
+      cart_item_count:           4,
+      unread_notification_count: 1,
+    }
+    const token = 'dummy_token'
+
+    setCurrentUser.run({
+      account, token,
+    })
+    router.push({ path: '/' })
+  } catch (e) {
     console.log(e.message) 
   }
 }
