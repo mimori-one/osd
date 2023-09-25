@@ -81,19 +81,19 @@ const pass = ref('')
 
 const login = async (): Promise<void> => {
   try {
-    const res = await $fetch('/api/v1/auth/', {
-      method: 'POST',
-      body:   {
-        email:    email.value,
-        password: pass.value,
-      },
-    })
-    console.log(res)
+    // const res = await $fetch('/api/v1/auth/', {
+    //   method: 'POST',
+    //   body:   {
+    //     email:    email.value,
+    //     password: pass.value,
+    //   },
+    // })
+    // console.log(res)
     const account = {
-      id:                        res.id,
+      id:                        '123',
       screen_name:               'もっくすくりーんねーむ',
       name:                      'サンプル名前１',
-      email:                     res.email,
+      email:                     'sample@mail.com',
       avatar_url:                'http://img.localhost:3000/mock.png',
       locale:                    'ja',
       tzname:                    'Asia/Tokyo',
