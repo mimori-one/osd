@@ -3,7 +3,7 @@
     <template v-if='step1'>
       <!-- 印刷領域 -->
       <div class='whitespace-pre-wrap'>
-        追加するサイズを選択してください。
+        サイズを選択してください。
       </div>
 
       <!-- セレクタ -->
@@ -50,10 +50,10 @@
       </div>
       <img src='https://images.demandware.net/dw/image/v2/BBBV_PRD/on/demandware.static/-/Sites-master-catalog/default/dw87a9bf8e/images/1100000/1106965.jpg?sw=2000'>
       <div class='text-red-500'>
-        ※印刷領域は後から変更できません。
+        ※印刷領域は販売開始後には変更できません。
       </div>
       <div>
-        追加する印刷サイズ
+        印刷サイズ
         <div v-for='detail in details'>
           ・{{ detail }}
         </div>

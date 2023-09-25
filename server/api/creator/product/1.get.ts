@@ -16,7 +16,7 @@ export default defineEventHandler(async () => {
     ],
     stocks: [
       {
-        sotck_number:  '10001',
+        stock_number:  '10001',
         created_at:    '2023-09-01 15:00',
         all_count:     10,
         ordered_count: 3,
@@ -26,7 +26,7 @@ export default defineEventHandler(async () => {
         price:         20_000,
       },
       {
-        sotck_number:  '10002',
+        stock_number:  '10002',
         created_at:    '2023-09-01 15:00',
         all_count:     50,
         ordered_count: 40,
@@ -36,7 +36,7 @@ export default defineEventHandler(async () => {
         price:         12_000,
       },
       {
-        sotck_number:  '10003',
+        stock_number:  '10003',
         created_at:    '2023-09-01 15:00',
         all_count:     20,
         ordered_count: 7,

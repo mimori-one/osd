@@ -12,4 +12,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  // nitro: {
+  //   devProxy: {
+  //     '/api/': {
+  //       target:       'https://market.dev.onesheen.jp/api/',
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
 })
