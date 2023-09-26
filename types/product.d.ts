@@ -3,7 +3,7 @@ export interface IProduct {
 
   title: string;
 
-  descriptiopn: string;
+  description: string;
 
   original_image_id: string;
 

@@ -5,6 +5,8 @@
     <CartItem :item='item' />
   </div>
 
+  <div>合計価格:31000</div>
+
   <div class='flex flex-col'>
     <Link class='m-3 rounded border bg-green-500 p-3 text-gray-200' href='/order/guest'>
       ゲストとして注文

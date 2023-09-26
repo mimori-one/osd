@@ -1,12 +1,10 @@
 <template>
   <div class='m-3 flex flex-col'>
-    <p>商品</p>
+    <p>登録済みの商品</p>
     <template v-for='item in items' :key='item.id'>
-      <Link
-        href='/creator/items/1/edit'
-      >
-        {{ item.title }}
-      </Link>
+      <CardsProduct :product='item'>
+        a
+      </CardsProduct>
     </template>
   </div>
 </template>
