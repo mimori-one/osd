@@ -4,7 +4,7 @@
 
     <!-- クリエイター登録済 -->
     <template v-if='currentUser?.is_seller'>
-      <Link class='m-4 bg-blue-500 p-3 text-gray-200' href='/creator/items/1/edit'>
+      <Link class='m-4 bg-blue-500 p-3 text-gray-200' href='/creator/items/create'>
         新規商品追加
       </Link>
       <Link class='m-4 bg-yellow-500 p-3 text-gray-200' href='/creator/items'>

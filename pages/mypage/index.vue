@@ -1,6 +1,6 @@
 <template>
   <div class='flex flex-col'>
-    <Link class='m-3 rounded border bg-blue-500 p-3 text-gray-200' href='/creator/items/1/edit'>
+    <Link class='m-3 rounded border bg-blue-500 p-3 text-gray-200' href='/creator/items/create'>
       新規商品追加
     </Link>
     <Link class='m-3 rounded border bg-yellow-500 p-3 text-gray-200' href='/login'>
