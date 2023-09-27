@@ -1,13 +1,110 @@
 <template>
   <header>
-    <nav class='border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-800 lg:px-6'>
-      <div class='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between'>
-        <!-- ロゴとサービス名 -->
-        <Link class='flex items-center' href='/'>
-          <img alt='onesheen Logo' class='mr-3 h-6 sm:h-9' src='https://flowbite.com/docs/images/logo.svg'>
-          <span class='self-center whitespace-nowrap text-xl font-semibold dark:text-white'>ONE SHEEN</span>
+    <div class='navbar bg-primary text-primary-content'>
+      <!-- ロゴとサービス名 -->
+      <div class='navbar-start'>
+        <Link class='btn btn-ghost text-xl normal-case' href='/'>
+          ONE SHEEN
         </Link>
+      </div>
 
+      <!-- 中央（なし） -->
+      <div class='navbar-center' />
+
+      <!-- 右 -->
+      <div class='navbar-end'>
+        <div class='dropdown dropdown-end'>
+          <label class='btn btn-ghost btn-circle' tabindex='0'>
+            <div class='indicator'>
+              <svg
+                class='h-5 w-5'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              ><path
+                d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+              /></svg>
+              <span class='badge badge-sm indicator-item'>2</span>
+            </div>
+          </label>
+          <div class='card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow' tabindex='0'>
+            <div class='card-body'>
+              <span class='text-lg font-bold'>2つの商品</span>
+              <span class='text-info'>合計金額: ¥999</span>
+              <div class='card-actions'>
+                <Link class='btn btn-primary btn-block' href='/cart'>
+                  カート内容を見る
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <template v-if='currentUser'>
+          <Link class='btn btn-ghost' href='/login'>
+            ユーザ名
+          </Link>
+        </template>
+
+        <template v-else>
+          <Link class='btn btn-ghost' href='/login'>
+            ログイン
+          </Link>
+        </template>
+      </div>
+    </div>
+
+    <!-- 検索 -->
+    <div class='navbar bg-neutral text-primary-content'>
+      <div class='dropdown dropdown-bottom'>
+        <label class='btn m-1 w-40' tabindex='0'>検索対象：全て
+          <svg
+            aria-hidden='true'
+            class='ml-2.5 h-2.5 w-2.5'
+            fill='none'
+            viewBox='0 0 10 6'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='m1 1 4 4 4-4'
+              stroke='currentColor'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              stroke-width='2'
+            />
+          </svg>
+        </label>
+        <ul class='dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow' tabindex='0'>
+          <li><a>全て</a></li>
+          <li><a>メタル商品</a></li>
+          <li><a>クリエイター</a></li>
+          <li><a>バリアブルフレーム</a></li>
+        </ul>
+      </div>
+
+      <input class='input input-bordered input-primary-content max-w-xm w-full' placeholder='検索したい単語を入力' type='text'>
+      
+      <button class='btn btn-ghost btn-circle'>
+        <svg
+          class='h-5 w-5'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+          xmlns='http://www.w3.org/2000/svg'
+        ><path
+          d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-width='2'
+        /></svg>
+      </button>
+    </div>
+
+    <nav class='hidden border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-800 lg:px-6'>
+      <div class='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between'>
         <!-- ヘッダ右 -->
         <div class='flex items-center justify-items-end'>
           <!-- 検索 -->
