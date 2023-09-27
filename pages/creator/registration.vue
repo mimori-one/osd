@@ -1,5 +1,5 @@
 <template>
-  <div>クリエイター登録</div>
+  <div>銀行口座の登録</div>
   <form class='w-full max-w-sm'>
     <div class='mb-6 md:flex md:items-center'>
       <div class='md:w-1/3'>
