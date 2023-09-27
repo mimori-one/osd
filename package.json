@@ -17,6 +17,7 @@
     "@nuxtjs/i18n": "^8.0.0-rc.4",
     "@types/node": "^18",
     "autoprefixer": "^10.4.14",
+    "daisyui": "^3.8.0",
     "eslint": "^8.49.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-vue-i18n": "^0.3.0",
