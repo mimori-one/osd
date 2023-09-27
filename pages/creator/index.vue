@@ -21,14 +21,18 @@
       </Link>
     </template>
 
-    <!-- クリエイター登録前 -->
+    <!-- ユーザ登録前 -->
     <template v-else>
-      {{ currentUser?.name }}
-
-      <p>クリエイター登録して商品を販売しましょう</p>
-      <Link class='m-4 bg-cyan-500 p-3 text-gray-200' href='/creator/registration'>
-        クリエイター登録
-      </Link>
+      <div class="m-4">
+        <p>ユーザ登録して自分の画像を販売しましょう</p>
+        <Link class='btn bg-secondary text-gray-200' href='/signup'>
+          新規ユーザ登録
+        </Link>
+        <p>アカウントをお持ちの方は</p>
+        <Link class='btn bg-primary text-gray-200' href='/login'>
+          ログイン
+        </Link>
+    </div>
     </template>
   </div>
 </template>
