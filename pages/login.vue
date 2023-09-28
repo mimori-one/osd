@@ -6,61 +6,53 @@
           <h1 class='text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl'>
             ログイン
           </h1>
-          <form action='#' class='space-y-4 md:space-y-6'>
+          <form action='#' class='space-y-2 md:space-y-4'>
             <div>
-              <label class='mb-2 block text-sm font-medium text-gray-900 dark:text-white' for='email'>メールアドレス</label>
+              <label class='text-xm mb-2 block font-medium text-gray-900 dark:text-white' for='email'>メールアドレス</label>
               <input
                 id='email'
                 v-model='email'
-                class='focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm'
+                class='input input-bordered mb-4 w-full'
                 name='email'
                 placeholder='sample@domain.com'
                 required=''
                 type='email'
               >
             </div>
+            
             <div>
-              <label class='mb-2 block text-sm font-medium text-gray-900 dark:text-white' for='password'>パスワード</label>
+              <label class='text-xm mb-2 block font-medium text-gray-900 dark:text-white' for='password'>パスワード</label>
               <input
                 id='password'
                 v-model='pass'
-                class='focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm'
+                class='input input-bordered mb-2 w-full'
                 name='password'
-                placeholder=''
+                placeholder='********'
                 required=''
                 type='password'
               >
+              <label class='label'>
+                <span class='label-text-alt' />
+                <Link class='label-text-alt' href='/'>パスワードを忘れた場合</Link>
+              </label>
             </div>
-            <div class='flex items-center justify-between'>
-              <div class='flex items-start'>
-                <div class='flex h-5 items-center'>
-                  <input
-                    id='remember'
-                    aria-describedby='remember'
-                    class='focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 h-4 w-4 rounded border border-gray-300 bg-gray-50 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800'
-                    required=''
-                    type='checkbox'
-                  >
-                </div>
-                <div class='ml-3 text-sm'>
-                  <label class='text-gray-500 dark:text-gray-300' for='remember'>パスワードを記憶する</label>
-                </div>
-              </div>
+
+            <div class='form-control'>
+              <label class='label mb-6 cursor-pointer'>
+                <span class='label-text'>パスワードを記憶する</span> 
+                <input checked='checked' class='checkbox' type='checkbox'>
+              </label>
             </div>
-            <div>
-              <Link class='gray-500 text-sm font-medium dark:text-gray-400' href='#'>
-                パスワードを忘れた場合
-              </Link>
-            </div>
-            <Btn class='w-full text-center' @click='login'>
+
+            <div class='btn w-full' @click='login'>
               ログイン
-            </Btn>
-            <div class='text-gray-500'>
-              <Link class='text-primary-600 dark:text-primary-500 font-medium hover:underline' href='/signup'>
-                新規登録はこちら
-              </Link>
             </div>
           </form>
+          <div class='text-gray-500'>
+            <Link class='text-primary-600 font-medium hover:underline' href='/signup'>
+              新規登録はこちら
+            </Link>
+          </div>
         </div>
       </div>
     </div>
