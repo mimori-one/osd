@@ -1,20 +1,31 @@
 <template>
   <div class='flex w-full flex-col'>
     <!-- タイトル -->
-    <p>{{ scene.title }}</p>
+    <div class='m-2 text-xl'>
+      {{ scene.title }}
+    </div>
 
     <!-- タグ -->
-    <div>
+    <div class='mb-2'>
       <!-- タグはv-for -->
-      <span class='mr-2 rounded border border-blue-400 bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-gray-700 dark:text-blue-400'>推しの子</span>
-      <span class='mr-2 rounded border border-gray-500 bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-400'>イラスト</span>
-      <span class='mr-2 rounded border border-red-400 bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-gray-700 dark:text-red-400'>雰囲気</span>
+      <Link class='badge mx-2 bg-blue-200' href='/search'>
+        キャラ名
+      </Link>
+      <Link class='badge mx-2 bg-blue-200' href='/search'>
+        推しの子
+      </Link>
+      <Link class='badge mx-2 bg-gray-200' href='/search'>
+        イラスト
+      </Link>
+      <Link class='badge mx-2 bg-gray-200' href='/search'>
+        技法
+      </Link>
     </div>
 
     <!-- 閲覧数・いいね数 -->
     <div class='flex h-10 w-full'>
       <div class='flex basis-1/4'>
-        <div class='h-10 w-10'>
+        <div class='h-8 w-8'>
           <svg
             aria-hidden='true'
             fill='none'
@@ -27,10 +38,10 @@
             <path d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' stroke-linecap='round' stroke-linejoin='round' />
           </svg>
         </div>
-        <span class='text-lg'>{{ scene.viewCount }}</span>
+        <span class='ml-1 text-lg'>{{ scene.viewCount }}</span>
       </div>
       <div class='flex basis-1/4'>
-        <div class='h-10 w-10'>
+        <div class='h-8 w-8'>
           <svg
             aria-hidden='true'
             fill='none'
@@ -42,20 +53,20 @@
             <path d='M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z' stroke-linecap='round' stroke-linejoin='round' />
           </svg>
         </div>
-        <span class='text-lg'>{{ scene.heartCount }}</span>
+        <span class='ml-1 text-lg'>{{ scene.heartCount }}</span>
       </div>
       <div class='basis-1/4' />
       <div class='flex basis-1/4' />
     </div>
 
     <!-- 商品説明 -->
-    <div class='mx-4'>
+    <div class='mx-4 mb-2'>
       <p>商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文...</p>
     </div>
 
     <!-- クリエイター概要 -->
     <div class='flex w-full flex-row items-center'>
-      <CardsCreatorIcon class='h-16 w-16' :url='scene.creator.avatar_url' />
+      <CardsCreatorIcon class='h-12 w-12' :url='scene.creator.avatar_url' />
       <p>{{ scene.creator.name }}</p>
     </div>
   </div>
@@ -64,6 +75,7 @@
 <script setup lang="ts">
 import { IScene } from '@/types/scene.d.ts'
 import CardsCreatorIcon from '@/components/cards/CreatorIcon'
+import Link from '@/components/commons/link'
 
 interface IProps {
   scene: IScene

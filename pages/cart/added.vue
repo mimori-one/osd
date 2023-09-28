@@ -1,15 +1,17 @@
 <template>
-  <p>商品がカートに追加されました。</p>
-  <div class='flex flex-col'>
-    <Link class='m-3 rounded border bg-green-500 p-3 text-gray-200' href='/seller'>
-      買い物を続ける
-    </Link>
-    <Link class='m-3 rounded border bg-yellow-500 p-3 text-gray-200' href='/cart'>
-      カートの中身を確認する
-    </Link>
-    <Link class='m-3 rounded border bg-orange-500 p-3 text-gray-200' href='/order'>
-      注文に進む
-    </Link>
+  <div class='m-4'>
+    <p>商品がカートに追加されました。</p>
+    <div class='flex flex-col'>
+      <Link class='btn bg-info text-white' href='/seller'>
+        買い物を続ける
+      </Link>
+      <Link class='btn bg-accent text-white' href='/cart'>
+        カートの中身を確認する
+      </Link>
+      <Link class='btn bg-secondary text-white' href='/order'>
+        注文に進む
+      </Link>
+    </div>
   </div>
 </template>
 

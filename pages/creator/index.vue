@@ -23,7 +23,7 @@
 
     <!-- ユーザ登録前 -->
     <template v-else>
-      <div class="m-4">
+      <div class='m-4'>
         <p>ユーザ登録して自分の画像を販売しましょう</p>
         <Link class='btn bg-secondary text-gray-200' href='/signup'>
           新規ユーザ登録
@@ -32,7 +32,7 @@
         <Link class='btn bg-primary text-gray-200' href='/login'>
           ログイン
         </Link>
-    </div>
+      </div>
     </template>
   </div>
 </template>
