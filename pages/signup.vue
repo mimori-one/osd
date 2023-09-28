@@ -1,51 +1,52 @@
 <template>
-  <div class='m-4'>
-    <div class='mb-4 font-bold text-gray-500'>
-      新規登録
-    </div>
+  <section>
+    <div class='mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0'>
+      <div class='mb-4 text-xl'>
+        新規登録
+      </div>
 
-    <form class='w-full max-w-sm'>
-      <div class='mb-6 md:flex md:items-center'>
-        <div class='mb-6'>
-          <label class='mb-2 block text-sm font-medium text-gray-900' for='email'>メールアドレス</label>
-          <input
-            id='email'
-            class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-            placeholder='sample@super.com'
-            required
-            type='email'
-          >
+      <template v-if='step === 1'>
+        <div class='form-control w-full max-w-xs'>
+          <label class='label'>
+            <span class='label-text'>新規登録にはメールアドレスが必要です。</span>
+          </label>
+          <input class='input input-bordered mb-4 w-full max-w-xs' placeholder='メールアドレスを入力' type='text'>
+          <div class='btn bg-primary' @click='mailConfirm'>
+            登録
+          </div>
         </div>
-        <div class='mb-6'>
-          <label class='mb-2 block text-sm font-medium text-gray-900' for='password'>パスワード</label>
-          <input
-            id='password'
-            class='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-            required
-            type='password'
-          >
+      </template>
+
+      <template v-if='step === 2'>
+        <div class='form-control w-full max-w-xs'>
+          <label class='label'>
+            <span class='label-text'>確認コードを記載されたメールを送信しました。</span>
+          </label>
+          <input class='input input-bordered w-full max-w-xs' placeholder='確認コードを入力' type='text'>
+          <label class='label mb-2'>
+            <span class='label-text-alt' />
+            <span class='label-text-alt' href='/'>※メールが届かない場合、迷惑メール設定がされている場合があります。</span>
+          </label>
+          <div class='btn bg-primary' @click='mailCheck'>
+            確認
+          </div>
         </div>
-      </div>
-      <div class='mb-6 md:flex md:items-center'>
-        <div class='md:w-1/3' />
-        <label class='block font-bold text-gray-500 md:w-2/3'>
-          <input class='mr-2 leading-tight' type='checkbox'>
-          <span class='text-sm'>
-            新着のお知らせ通知をメールで受け取る
-          </span>
-        </label>
-      </div>
-      <div class='md:flex md:items-center'>
-        <Btn
-          class='w-full md:w-auto'
-          role='secondary'
-          @click='signup'
-        >
-          登録
-        </Btn>
-      </div>
-    </form>
-  </div>
+      </template>
+
+      <template v-if='step === 3'>
+        <div class='form-control w-full max-w-xs'>
+          <label class='label'>
+            <span class='label-text'>パスワードの設定</span>
+          </label>
+          <input class='input input-bordered mb-4 w-full max-w-xs' placeholder='設定するパスワードを入力' type='text'>
+          <input class='input input-bordered mb-4 w-full max-w-xs' placeholder='設定するパスワードを再度入力' type='text'>
+          <div class='btn bg-primary' @click='signup'>
+            登録
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -53,6 +54,16 @@ import { useRouter } from 'vue-router'
 import Btn from '@/components/commons/btn.vue'
 
 const router = useRouter()
+
+const step = ref(1)
+
+const mailConfirm = async (): Promise<void> => {
+  step.value = 2
+}
+
+const mailCheck = async (): Promise<void> => {
+  step.value = 3
+}
 
 const signup = async (): Promise<void> => {
   router.push({ path: '/' })
