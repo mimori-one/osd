@@ -87,7 +87,7 @@
 
       <input class='input input-bordered input-primary-content max-w-xm w-full' placeholder='検索したい単語を入力' type='text'>
       
-      <button class='btn btn-ghost btn-circle' @click="search">
+      <button class='btn btn-ghost btn-circle' @click='search'>
         <svg
           class='h-5 w-5'
           fill='none'
@@ -186,8 +186,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useCurrentUser } from '@/composables/sessions/current_user'
 import { useRouter } from 'vue-router'
+import { useCurrentUser } from '@/composables/sessions/current_user'
 import Btn from '@/components/commons/btn.vue'
 import Link from '@/components/commons/link.vue'
 import DMenu from '@/components/menu.vue'
@@ -197,7 +197,7 @@ const currentUser = useCurrentUser().data
 const router = useRouter()
 
 const search = (): void => {
-router.push('/search')
+  router.push('/search')
 }
 
 </script>

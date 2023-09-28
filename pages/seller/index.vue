@@ -1,13 +1,17 @@
 <template>
   <div class='m-3 flex flex-col'>
     <div>販売トップ</div>
-    <div>おすすめ商品</div>
-    <div class='m-3 flex flex-wrap content-around'>
+    <div class='text-2xl'>
+      新着商品
+    </div>
+    <div class='flex flex-wrap content-around'>
       <div v-for='bar in fff' class='flex flex-1 justify-center'>
         <CardsCreatorScene class='m-3' :scene='bar' />
       </div>
     </div>
-    <div>おすすめクリエイター</div>
+    <div class='text-2xl'>
+      クリエイター
+    </div>
   </div>
 </template>
 

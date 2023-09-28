@@ -1,61 +1,53 @@
 <template>
   <div>
-    <select
-      id='countries'
-      class='
-        block
-        w-full rounded-lg
-        border border-gray-300
-        bg-gray-50
-        p-2.5 text-sm
-        text-gray-900
-        focus:border-blue-500
-        focus:ring-blue-500
-        dark:border-gray-600
-        dark:bg-gray-700
-        dark:text-white
-        dark:placeholder:text-gray-400
-        dark:focus:border-blue-500
-        dark:focus:ring-blue-500
-      '
-    >
-      <option selected>
-        サイズを選択
-      </option>
-      <option value='US'>
-        A5
-      </option>
-      <option value='CA'>
-        A4
-      </option>
-      <option value='FR'>
-        A3
-      </option>
-      <option value='DE'>
-        SQUARE(100mm x 100mm)
-      </option>
-    </select>
-    <div>価格: 10,000円</div>
-    <div class='flex w-full justify-center'>
-      <Btn
-        class='
-          w-1/2
-          bg-purple-500
-          text-white
-          hover:bg-purple-600
-          focus:outline-none
-          focus:ring-4
-          focus:ring-purple-200
-          dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-800
-        '
-        type='button'
+    <div class='flex'>
+      <select
+        id='countries'
+        v-model='selectedPrice'
+        class='select bg-normal input-bordered mb-2'
       >
-        ARで確認する
-      </Btn>
+        <option 
+          disabled
+          selected
+          :value='0'
+        >
+          サイズを選択
+        </option>
+        <option value='20,000'>
+          A3縦（297mm x 420mm）
+        </option>
+        <option value='15,000'>
+          A4縦（210mm x 297mm）
+        </option>
+        <option value='10,000'>
+          A5縦（148mm x 210mm）
+        </option>
+        <option value='8,000'>
+          SQUARE(100mm x 100mm)
+        </option>
+      </select>
+      <div v-if='selectedPrice !== 0' class='flex w-full justify-center'>
+        <button
+          class='
+          btn
+          bg-primary
+          text-primary-content
+        '
+          type='button'
+        >
+          ARでサイズを確認
+        </button>
+      </div>
+    </div>
+    <div v-if='selectedPrice !== 0' class='m-2 text-xl'>
+      価格: {{ selectedPrice }}円
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import Btn from '@/components/commons/btn'
+
+const selectedPrice = ref(0)
 </script>
