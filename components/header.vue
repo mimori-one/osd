@@ -3,7 +3,60 @@
     <div class='navbar bg-primary text-primary-content'>
       <!-- ロゴとサービス名 -->
       <div class='navbar-start'>
-        <Link class='btn btn-ghost text-xl normal-case' href='/'>
+        <div class='drawer'>
+          <input id='my-drawer' class='drawer-toggle' type='checkbox'>
+          <div class='drawer-content'>
+            <!-- Page content here -->
+            <label class='btn btn-primary drawer-button' for='my-drawer'>
+              <svg
+                class='h-5 w-5'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              ><path
+                d='M4 6h16M4 12h16M4 18h7'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                stroke-width='2'
+              /></svg>
+            </label>
+          </div> 
+          <div class='drawer-side z-20'>
+            <label class='drawer-overlay' for='my-drawer' />
+            <ul class='menu bg-base-200 text-base-content min-h-full w-80 p-4'>
+              <!-- Sidebar content here -->
+              <li>
+                <Link href='/'>
+                  メタルとは
+                </Link>
+              </li>
+              <div class='divider' /> 
+              <li>
+                <Link href='/seller'>
+                  購入する
+                </Link>
+              </li>
+              <li>
+                <Link href='/creator'>
+                  販売する
+                </Link>
+              </li>
+              <li>
+                <Link href='/myprint'>
+                  自分の画像を印刷
+                </Link>
+              </li>
+              <li>
+                <Link href='/terms'>
+                  利用規約
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <Link class='btn btn-ghost ml-0 pl-0 normal-case' href='/'>
           <img class='h-4 object-cover' src='https://mimori-one.github.io/printdoc/assets/logo.png'>
         </Link>
       </div>
@@ -91,7 +144,7 @@
         <svg
           class='h-5 w-5'
           fill='none'
-          stroke='currentColor'
+          stroke='white'
           viewBox='0 0 24 24'
           xmlns='http://www.w3.org/2000/svg'
         ><path
