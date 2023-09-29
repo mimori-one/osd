@@ -111,7 +111,7 @@
             </label>
           </div>
 
-          <div class='btn bg-normal' @click='saveAddress'>
+          <div class='btn btn-normal' @click='saveAddress'>
             登録
           </div>
         </div>
@@ -119,7 +119,7 @@
 
       <!-- 注文内容の確認 -->
       <template v-if='step === 2'>
-        <div>
+        <div class='flex flex-col'>
           <div class='mb-2 text-2xl'>
             注文内容の確認
           </div>
@@ -162,7 +162,7 @@
           <label class='label'>
             <span class='label-text'>小計: 35000円</span>
           </label>
-          <div class='btn bg-info' @click='mailCheck'>
+          <div class='btn btn-info' @click='mailCheck'>
             決済に進む
           </div>
         </div>
@@ -174,7 +174,7 @@
             <span class='label-text'>決済</span>
           </label>
           <div>決済額:35000円</div>
-          <div class='btn bg-primary text-white' @click='charge'>
+          <div class='btn btn-primary text-white' @click='charge'>
             決済
           </div>
         </div>

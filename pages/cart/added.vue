@@ -2,13 +2,13 @@
   <div class='m-4'>
     <p>商品がカートに追加されました。</p>
     <div class='flex flex-col'>
-      <Link class='btn bg-info text-white' href='/seller'>
+      <Link class='btn btn-info mb-2' href='/seller'>
         買い物を続ける
       </Link>
-      <Link class='btn bg-accent text-white' href='/cart'>
+      <Link class='btn btn-accent mb-2' href='/cart'>
         カートの中身を確認する
       </Link>
-      <Link class='btn bg-secondary text-white' href='/order'>
+      <Link class='btn btn-secondary' href='/order'>
         注文に進む
       </Link>
     </div>

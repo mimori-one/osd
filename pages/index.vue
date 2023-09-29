@@ -5,13 +5,13 @@
       トップページ（ランディングページ）
     </div>
     <div class='m-4 flex flex-col'>
-      <Link class='btn bg-blue-500 text-gray-200' href='/seller'>
+      <Link class='btn btn-primary mb-2' href='/seller'>
         商品を買う
       </Link>
-      <Link class='btn bg-orange-700 text-gray-200' href='/creator'>
+      <Link class='btn btn-secondary mb-2' href='/creator'>
         販売する
       </Link>
-      <Link class='btn bg-green-500 text-gray-200' href='/myprint'>
+      <Link class='btn btn-accent mb-2' href='/myprint'>
         自分の画像を印刷する
       </Link>
     </div>
