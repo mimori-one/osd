@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='flex'>
+    <div class='flex flex-col'>
       <select
         id='countries'
         v-model='selectedPrice'

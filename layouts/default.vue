@@ -1,6 +1,8 @@
 <template>
   <Header />
-  <slot />
+  <section>
+    <slot />
+  </section>
   <Footer />
   <ModalSlot />
 </template>
