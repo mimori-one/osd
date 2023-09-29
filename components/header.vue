@@ -4,7 +4,7 @@
       <!-- ロゴとサービス名 -->
       <div class='navbar-start'>
         <Link class='btn btn-ghost text-xl normal-case' href='/'>
-          ONE SHEEN
+          <img class='h-4 object-cover' src='https://mimori-one.github.io/printdoc/assets/logo.png'>
         </Link>
       </div>
 

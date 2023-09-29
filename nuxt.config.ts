@@ -12,6 +12,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  app: {
+    head: {
+      htmlAttrs: {
+        'data-theme': 'cmyk',
+      },
+    },
+  },
   // nitro: {
   //   devProxy: {
   //     '/api/': {

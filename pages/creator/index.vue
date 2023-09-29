@@ -1,35 +1,35 @@
 <template>
-  <div class='flex flex-col'>
+  <div class='m-4 flex flex-col'>
     <img src='https://morishitaya.com/hiroba/wp-content/uploads/990e8ae561e9ed52eb3c4a820679fd9b-300x198.jpg'>
 
     <!-- クリエイター登録済 -->
-    <template v-if='currentUser?.is_seller'>
-      <Link class='m-4 bg-blue-500 p-3 text-gray-200' href='/creator/items/create'>
+    <template v-if='currentUser'>
+      <Link class='btn btn-primary mb-4' href='/creator/items/create'>
         新規商品追加
       </Link>
-      <Link class='m-4 bg-yellow-500 p-3 text-gray-200' href='/creator/items'>
+      <Link class='btn bg-noral mb-4' href='/creator/items'>
         商品管理
       </Link>
-      <Link class='m-4 bg-green-500 p-3 text-gray-200' href='/creator/sales'>
+      <Link class='btn bg-noral mb-4' href='/creator/sales'>
         売上管理
       </Link>
-      <Link class='m-4 bg-pink-500 p-3 text-gray-200' href='/creator/message_card'>
+      <Link class='btn bg-noral mb-4' href='/creator/message_card'>
         メッセージカード登録
       </Link>
-      <Link class='m-4 bg-cyan-500 p-3 text-gray-200' href='/creator/popup'>
+      <Link class='btn bg-noral mb-4' href='/creator/popup'>
         ポップアップ登録
       </Link>
     </template>
 
     <!-- ユーザ登録前 -->
     <template v-else>
-      <div class='m-4'>
+      <div class='m-4 flex flex-col'>
         <p>ユーザ登録して自分の画像を販売しましょう</p>
-        <Link class='btn bg-secondary text-gray-200' href='/signup'>
+        <Link class='btn btn-secondary mb-2' href='/signup'>
           新規ユーザ登録
         </Link>
         <p>アカウントをお持ちの方は</p>
-        <Link class='btn bg-primary text-gray-200' href='/login'>
+        <Link class='btn btn-primary mb-2' href='/login'>
           ログイン
         </Link>
       </div>
