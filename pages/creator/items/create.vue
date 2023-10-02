@@ -3,30 +3,93 @@
     <form>
       <div class='mb-6 grid gap-6 md:grid-cols-2'>
         <div class='text-xl'>
-          新規商品登録
+          新しい商品の登録
         </div>
-        <div>
+
+        <ul class='steps'>
+          <li class='step step-primary text-sm'>
+            画像登録
+          </li>
+          <li class='step text-sm' :class="{'step-primary': step > 1}">
+            商品内容入力
+          </li>
+          <li class='step' :class="{'step-primary': step > 2}">
+            価格設定
+          </li>
+          <li class='step' :class="{'step-primary': step > 3}">
+            内容確認
+          </li>
+        </ul>
+
+        <div v-if='step === 1'>
           <div>
             <!-- 画像アップロード -->
             <template v-if='imageId'>
               <div class='text-2xl'>
-                アップロードした画像
+                画像の登録
               </div>
+
+              <!-- プレビュー -->
               <img class='my-3 w-48' src='https://mimori-one.github.io/printdoc/assets/original.png'>
   
+              <div class='divider' />
+              <div class='mb-2 text-2xl'>
+                サイズ設定
+              </div>
+              <div class='stat text-xl'>
+                A版（縦）
+              </div>
+              <div class='my-2 flex items-center'>
+                <button class='btn btn-normal mr-2' type='button' @click='openSizeModal'>
+                  サイズを変更
+                </button>
+                <button class='btn btn-sm btn-outline btn-ghost border-slate-300' type='button' @click='openSizeNotice'>
+                  <svg
+                    class='stroke-primary h-6 w-6 shrink-0'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                  ><path
+                    d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                  /></svg>
+
+                  サイズ設定について
+                </button>
+              </div>
+              <div class='divider' />
               <div class='text-2xl'>
-                サイズ・印刷領域の設定
+                印刷エリア設定
               </div>
-              <div>
-                サイズ:A版（縦）
-              </div>
-              <Btn class='my-4' type='button' @click='openSizeModal'>
-                サイズを変更
-              </Btn>
+
               <img class='w-48' src='https://mimori-one.github.io/printdoc/assets/preview.png'>
-              <Btn class='my-4' type='button' @click='openAreaSelectModal'>
-                印刷領域を変更
-              </Btn>
+              <div class='my-2 flex items-center'>
+                <button class='btn my-4 mr-2' type='button' @click='openAreaSelectModal'>
+                  印刷エリアを変更
+                </button>
+                <button class='btn btn-sm btn-outline btn-ghost border-slate-300' type='button' @click='openAreaNotice'>
+                  <svg
+                    class='stroke-primary h-6 w-6 shrink-0'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                  ><path
+                    d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+                    stroke-linecap='round'
+                    stroke-linejoin='round'
+                    stroke-width='2'
+                  /></svg>
+
+                  印刷エリアについて
+                </button>
+              </div>
+              <div class='divider' />
+
+              <div class='btn btn-primary w-full' type='button' @click='step = 2'>
+                商品説明の設定に進む
+              </div>
             </template>
   
             <template v-else>
@@ -35,181 +98,40 @@
               </Upload>
             </template>
           </div>
-  
-  
-          <div v-if='step > 1'>
-            <!-- タイトル系 -->
-            <div>
-              <div class='mb-2'>
-                <label class='mb-2 block text-sm font-medium text-gray-900' for='first_name'>タイトル</label>
-                <Input
-                  id='first_name'
-                  class='w-full'
-                  placeholder='作品名'
-                  required
-                  type='text'
-                />
-              </div>
-              <div class='mb-2'>
-                <label class='mb-2 block text-sm font-medium text-gray-900' for='large-input'>
-                  詳細
-                </label>
-                <Input
-                  id='large-input'
-                  class='w-full border-gray-300 bg-gray-50 p-4 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white'
-                  placeholder='作品詳細'
-                  type='text'
-                />
-              </div>
+        </div>
+
+
+        <div v-if='step === 2'>
+          <!-- タイトル系 -->
+          <div>
+            <div class='mb-2 text-xl'>
+              商品説明
             </div>
-  
-            <!-- <label class='mb-2 block text-sm font-medium text-gray-900 dark:text-white' for='large-input'>
-                オリジナル画像
+            <div class='mb-2'>
+              <label class='mb-2 block text-sm font-medium text-gray-900' for='first_name'>タイトル</label>
+              <input class='input input-bordered w-full' placeholder='商品名を入力' type='text'>
+            </div>
+            <div class='mb-2'>
+              <label class='mb-2 block text-sm font-medium text-gray-900' for='large-input'>
+                詳細
               </label>
-              <div v-if='sizeParams === 0' class='flex w-full items-center justify-center'>
-                <label
-                  class='dark:hover:bg-bray-800 flex h-48 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600'
-                  for='dropzone-file'
-                >
-                  <div class='flex flex-col items-center justify-center pb-6 pt-5'>
-                    <svg
-                      aria-hidden='true'
-                      class='mb-4 h-8 w-8 text-gray-500 dark:text-gray-400'
-                      fill='none'
-                      viewBox='0 0 20 16'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <path
-                        d='M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2'
-                        stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='2'
-                      />
-                    </svg>
-                    <span class='mb-2 text-sm font-semibold text-gray-500 dark:text-gray-400'>
-                      クリックして画像を選択
-                    </span>
-                    <p class='mb-2 text-sm text-gray-500 dark:text-gray-400'>またはファイルをドラッグアンドドロップ</p>
-                    <p class='text-xs text-gray-500 dark:text-gray-400'>
-                      PNG, JPG, PSD(MAX. 10000x10000px)
-                    </p>
-                  </div>
-                  <input id='dropzone-file' class='hidden' type='file'>
-                </label>
-              </div> -->
-  
-            <!-- 商品追加 -->
-            <!-- <Btn class='my-4' type='button'>
-                <svg
-                  aria-hidden='true'
-                  class='h-5 w-5'
-                  fill='currentColor'
-                  viewBox='0 0 32 32'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M27.2,8.22H23.78V5.42A3.42,3.42,0,0,0,20.36,2H5.42A3.42,3.42,0,0,0,2,5.42V20.36a3.42,3.42,0,0,0,3.42,3.42h2.8V27.2A2.81,2.81,0,0,0,11,30H27.2A2.81,2.81,0,0,0,30,27.2V11A2.81,2.81,0,0,0,27.2,8.22ZM5.42,21.91a1.55,1.55,0,0,1-1.55-1.55V5.42A1.54,1.54,0,0,1,5.42,3.87H20.36a1.55,1.55,0,0,1,1.55,1.55v2.8H11A2.81,2.81,0,0,0,8.22,11V21.91ZM28.13,27.2a.93.93,0,0,1-.93.93H11a.93.93,0,0,1-.93-.93V11a.93.93,0,0,1,.93-.93H27.2a.93.93,0,0,1,.93.93Z'
-                  />
-                  <path
-                    d='M24.09,18.18H20v-4a.93.93,0,1,0-1.86,0v4h-4a.93.93,0,0,0,0,1.86h4v4.05a.93.93,0,1,0,1.86,0V20h4.05a.93.93,0,1,0,0-1.86Z'
-                  />
-                </svg>
-                <span class='ml-2 text-center text-sm font-medium' @click='openSizeModal'>販売するサイズの追加</span>
-              </Btn> -->
-  
-  
-            <!-- 販売サイズ選択 -->
-            <!-- <div v-if='sizeParams !== 0'>
-                <div class='mb-2 block text-sm font-medium text-gray-900 dark:text-white'>
-                  <Btn @click='scanFile'>
-                    SCAN
-                  </Btn>
-                  <div v-for='size in scanResult.available_size' class='mb-2 flex items-start'>
-                    <div class='flex h-5 items-center'>
-                      <Input
-                        id='remember'
-                        class='h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300'
-                        required
-                        type='checkbox'
-                        value=''
-                      />
-                    </div>
-                    <label class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300' for='remember'>
-                      {{ size.name }} ( {{ size.long_side }} mm x {{ size.short_side }} mm )
-                    </label>
-                  </div>
-                </div>
-              </div>
-  
-              <Btn @click='scanFile'>
-                SET
-              </Btn>
-  
-              <div>
-                <p>縦横</p>
-                <div class='mb-4 flex items-center'>
-                  <input
-                    id='default-radio-1'
-                    class='h-4 w-4'
-                    name='default-radio'
-                    type='radio'
-                    value=''
-                  >
-                  <label class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300' for='default-radio-1'>縦</label>
-                </div>
-                <div class='mb-4 flex items-center'>
-                  <input
-                    id='default-radio-1'
-                    class='h-4 w-4'
-                    name='default-radio'
-                    type='radio'
-                    value=''
-                  >
-                  <label class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300' for='default-radio-1'>横</label>
-                </div>   
-              </div> -->
-  
-  
-            <!-- <div>
-                <p>印刷領域を設定</p>
-                <div class='mb-4 flex items-center'>
-                  <input
-                    id='default-radio-1'
-                    class='h-4 w-4'
-                    name='default-radio'
-                    type='radio'
-                    value=''
-                  >
-                  <label class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300' for='default-radio-1'>クロップ(自動)</label>
-                </div>
-                <div class='mb-4 flex items-center'>
-                  <input
-                    id='default-radio-1'
-                    class='h-4 w-4'
-                    name='default-radio'
-                    type='radio'
-                    value=''
-                  >
-                  <label class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300' for='default-radio-1'>フィット(自動)</label>
-                </div>
-                <div class='flex items-center'>
-                  <input
-                    id='default-radio-2'
-                    checked
-                    class='h-4 w-4 '
-                    name='default-radio'
-                    type='radio'
-                    value=''
-                  >
-                  <label class='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300' for='default-radio-2'>手動で設定</label>
-                </div>      
-              </div> -->
+              <textarea class='textarea textarea-bordered w-full' placeholder='作品の詳細（10000文字まで）' />
+            </div>
+          </div>
+
+          <div class='divider' />
+
+          <div class='btn btn-primary mb-4 w-full' type='button' @click='step = 3'>
+            価格の設定に進む
+          </div>
+
+          <div class='btn w-full' type='button' @click='step = 1'>
+            画像登録に戻る
           </div>
         </div>
   
   
-        <div v-if='sizeParams === 2'>
+        <div v-if='sizeParams === 3'>
           <div>
             <label class='mb-2 block text-sm font-medium text-gray-900 dark:text-white' for='company'>レーザー彫刻オプション</label>
             <div class='mb-6 flex items-start'>
@@ -260,46 +182,115 @@
       </div>
   
       <!-- サイズ・価格・数量の設定 -->
-      <div v-if='step > 1'>
+      <div v-if='step === 3'>
         <template v-if='productData.activated_sizes'>
+          <div class='divider' />
           <div class='text-xm mb-2 block font-medium text-gray-900'>
-            サイズ・価格・枚数設定
+            販売サイズ・価格・枚数設定
+            <div class='mt-1 text-sm'>
+              ※販売するサイズにチェックを入れ、価格を設定してください。
+            </div>
             <ul>
               <li v-for='stock in scanResult.available_size' class='py-2 sm:pb-4'>
-                <div class='flex flex-col space-x-4'>
-                  <div class='min-w-0 flex-1'>
-                    <label class='block font-bold md:w-2/3'>
+                <div class='flex flex-col'>
+                  <div class='label cursor-pointer'>
+                    <label class='label cursor-pointer'>
                       <input
                         v-model='activeSize'
-                        class='mr-2 leading-tight'
+                        class='checkbox checkbox-sm mr-2'
                         type='checkbox'
                         :value='stock.name'
                       >
-                      <span class='text-sm'>
+                      <span class='text-xm'>
                         {{ stock.name }} ( {{ stock.vertical }} mm x {{ stock.horizontal }} mm)
                       </span>
                     </label>
                   </div>
                   <div class='flex items-center justify-center'>
                     <div
-                      class='relative w-full p-2'
+                      class='relative w-full'
                     >
-                      <label>
-                        <input class='mr-2 w-24 leading-tight' :placeholder='stock.min_price' type='number'>
-                        <span class='text-sm'>
-                          円
-                        </span>
-                      </label>
-                      <div v-if='!activeSize.includes(stock.name)' class='absolute inset-0 backdrop-brightness-50' />
-                      
-                      <Btn class='text-sm' type='button'>
-                        販売枚数を設定（開きません）
-                      </Btn>
+                      <div class='p-2'>
+                        <label>
+                          <input class='input input-bordered mb-2 w-32' :placeholder='stock.min_price' type='number'>
+                          <span class='text-xm ml-2'>
+                            ※最低設定価格:8000円
+                          </span>
+                        </label>
+                        
+                        <button class='btn btn-outline btn-sm' type='button'>
+                          販売枚数を設定（開きません）
+                        </button>
+
+                        <div v-if='!activeSize.includes(stock.name)' class='absolute inset-0 rounded-lg backdrop-brightness-50' />
+                      </div>
                     </div>
                   </div>
                 </div>
               </li>
             </ul>
+          </div>
+          <div class='divider' />
+
+          <button
+            class='btn btn-primary mb-4 w-full'
+            role='default'
+            type='button'
+            @click='step = 4'
+          >
+            登録内容の確認
+          </button>
+
+          <div class='btn w-full' type='button' @click='step = 2'>
+            商品説明の登録に戻る
+          </div>
+        </template>
+      </div>
+
+      <div v-if='step === 4'>
+        <template v-if='productData.activated_sizes'>
+          <div class='divider' />
+          <div class='text-xm mb-2 block font-medium text-gray-900'>
+            内容の確認
+            <div>
+              <img class='w-48' src='https://mimori-one.github.io/printdoc/assets/preview.png'>
+            </div>
+            <div class='divider' />
+            <div>タイトル</div>
+            <div>{{ productData?.title }}</div>
+            <div>詳細</div>
+            <div>{{ productData?.description }}</div>
+            <div class='divider' />
+            <ul>
+              <li v-for='stock in scanResult.available_size' class='py-2 sm:pb-4'>
+                <div class='flex flex-col'>
+                  <div class='label cursor-pointer'>
+                    <span class='text-xm'>
+                      {{ stock.name }} ( {{ stock.vertical }} mm x {{ stock.horizontal }} mm)
+                    </span>
+                  </div>
+                  <div class='flex'>            
+                    <span class='text-xl'>
+                      {{ stock.min_price }} 円
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class='divider' />
+
+          <button
+            class='btn btn-secondary mb-4 w-full'
+            role='default'
+            type='button'
+            @click='saveItem'
+          >
+            この内容で登録
+          </button>
+
+          <div class='btn w-full' type='button' @click='step = 2'>
+            価格設定に戻る
           </div>
         </template>
       </div>
@@ -316,16 +307,6 @@
           </div>
         </ul>
       </template>
-  
-      <Btn
-        class='w-full'
-        disabled='true'
-        role='default'
-        type='button'
-        @click='saveItem'
-      >
-        この内容で登録
-      </Btn>
     </form>
   
     <Link class='text-white hover:underline' href='/creator'>
@@ -337,17 +318,20 @@
 <script setup lang="ts">
 import { Hash } from 'crypto'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useOpenComponentModal } from '@/composables/components/open_component_modal'
-// import { IProduct } from '@/types/product'
 import Btn from '@/components/commons/btn'
 import Link from '@/components/commons/link'
 import Stock from '@/components/creators/stock'
+import AreaNoticeModal from '@/components/domains/area_notice_modal.vue'
 import AreaSelectModal from '@/components/domains/area_select_modal.vue'
+import SizeNoticeModal from '@/components/domains/size_notice_modal.vue'
 import ConfirmModal, { IProps, TResult } from '@/components/domains/size_select_modal.vue'
 import Input from '@/components/forms/input'
 import Upload from '@/components/forms/upload.vue'
-// import ConfirmModal, { IProps, TResult } from '@/components/systems/confirm_modal.vue'
-  
+
+const router = useRouter()
+
 const sizeParams = ref(0)
 const fileProgress = ref<number>(-1)
 const imageId = ref(0)
@@ -357,6 +341,8 @@ const price = ref<Array<number>>([])
   
 const openConfirmModal = useOpenComponentModal<IProps, TResult>(ConfirmModal)
 const openAreaModal = useOpenComponentModal<IProps, TResult>(AreaSelectModal)
+const openSizeNoticeModal = useOpenComponentModal<IProps, TResult>(SizeNoticeModal)
+const openAreaNoticeModal = useOpenComponentModal<IProps, TResult>(AreaNoticeModal)
   
 const { 
   data: scanResult, 
@@ -373,6 +359,14 @@ const openSizeModal = async (): Promise<void> => {
     console.log('サイズを追加')
   }
 }
+
+const openSizeNotice = async (): Promise<void> => {
+  console.log('clicked')
+  const result = await openSizeNoticeModal.run({ subject: 'サイズ設定について', message: '' })
+  if (result === 'ok') {
+    console.log('サイズを追加')
+  }
+}
   
 const openAreaSelectModal = async (): Promise<void> => {
   console.log('clicked')
@@ -381,17 +375,27 @@ const openAreaSelectModal = async (): Promise<void> => {
     console.log('サイズを追加')
   }
 }
+
+const openAreaNotice = async (): Promise<void> => {
+  console.log('clicked')
+  const result = await openAreaNoticeModal.run({ subject: 'サイズ設定について', message: '' })
+  if (result === 'ok') {
+    console.log('サイズを追加')
+  }
+}
   
 const saveItem = async (): Promise<void> => {
+  router.push({ path: '/creator' })
 }
   
 // ファイルアップロード
 const onInput = async (files: File[] | FileList | null): Promise<void> => {
   if (files) {
     try {
+      console.log('file upload')
       fileProgress.value = 1
       imageId.value = 1
-      step.value = 2
+      // step.value = 2
     } finally {
       fileProgress.value = -1
     }

@@ -1,8 +1,8 @@
 export default defineEventHandler(async () => {
   return {
     id:                1,
-    title:             '',
-    description:       '',
+    title:             '商品名テスト1',
+    description:       '商品説明テスト1',
     original_image_id: 'RANDOM1',
     activated_sizes:   [
       {
