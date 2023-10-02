@@ -27,7 +27,7 @@
             <span class='label-text-alt' />
             <span class='label-text-alt' href='/'>※メールが届かない場合、迷惑メール設定がされている場合があります。</span>
           </label>
-          <div class='btn bg-info' @click='mailCheck'>
+          <div class='btn bg-normal' @click='mailCheck'>
             確認
           </div>
         </div>
@@ -40,7 +40,7 @@
           </label>
           <input class='input input-bordered mb-4 w-full max-w-xs' placeholder='設定するパスワードを入力' type='text'>
           <input class='input input-bordered mb-4 w-full max-w-xs' placeholder='設定するパスワードを再度入力' type='text'>
-          <div class='btn bg-primary text-white' @click='signup'>
+          <div class='btn bg-info text-white' @click='signup'>
             登録
           </div>
         </div>

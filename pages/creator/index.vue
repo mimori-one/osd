@@ -1,6 +1,6 @@
 <template>
   <div class='m-4 flex flex-col'>
-    <img src='https://morishitaya.com/hiroba/wp-content/uploads/990e8ae561e9ed52eb3c4a820679fd9b-300x198.jpg'>
+    <img class='mb-4' src='https://morishitaya.com/hiroba/wp-content/uploads/990e8ae561e9ed52eb3c4a820679fd9b-300x198.jpg'>
 
     <!-- クリエイター登録済 -->
     <template v-if='currentUser'>
@@ -23,7 +23,7 @@
 
     <!-- ユーザ登録前 -->
     <template v-else>
-      <div class='m-4 flex flex-col'>
+      <div class='flex flex-col'>
         <p>ユーザ登録して自分の画像を販売しましょう</p>
         <Link class='btn btn-secondary mb-2' href='/signup'>
           新規ユーザ登録

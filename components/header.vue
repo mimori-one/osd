@@ -56,7 +56,7 @@
           </div>
         </div>
 
-        <Link class='btn btn-ghost ml-0 pl-0 normal-case' href='/'>
+        <Link class='btn btn-ghost ml-0 px-1 normal-case' href='/'>
           <img class='h-4 object-cover' src='https://mimori-one.github.io/printdoc/assets/logo.png'>
         </Link>
       </div>
